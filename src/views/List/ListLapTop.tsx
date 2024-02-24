@@ -1,6 +1,6 @@
-import React from 'react'
 import CardBase from 'components/Card/CardBase';
 import Pagination from 'components/Pagination';
+import LoadingMask from 'components/LoadingMask';
 import useFetchProducts from 'hooks/useProductsApi';
 
 function ListLaptop() {
@@ -29,7 +29,6 @@ function ListLaptop() {
                   key={product.id}
                   title={product.title}
                   description={product.description}
-                  className=''
                 />
               ))
             }
@@ -40,10 +39,7 @@ function ListLaptop() {
         </>
       }
       {
-        isLoading
-        && <div className='absolute top-0 left-0 w-full h-full bg-black/55 font-semibold text-white text-2xl flex justify-center items-center'>
-          Loading...
-        </div>
+        isLoading && <LoadingMask />
       }
     </>
   )

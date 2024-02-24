@@ -8,14 +8,12 @@ A list that allows easy reading of a large amount of data and smooth scrolling o
 - SCSS + TailwindCSS 3
 - TypeScript 5
 
-
-
 ## Features
 
 - Pagination
 - Infinite scrolling
 - Responsive Web Design(RWD)
-
+- API Cache
 
 ## Environment
 

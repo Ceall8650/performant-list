@@ -14,13 +14,8 @@ function Pagination({ totalPages, change }: PaginationProps) {
       return
     }
 
-    setCurrentPage(prev => {
-      let newPageNumber = prev + 1
-
-      change(newPageNumber)
-
-      return newPageNumber
-    })
+    setCurrentPage(prev => prev + 1)
+    change(currentPage)
   }
 
   function back() {
@@ -28,13 +23,8 @@ function Pagination({ totalPages, change }: PaginationProps) {
       return
     }
 
-    setCurrentPage(prev => {
-      let newPageNumber = prev - 1
-
-      change(newPageNumber)
-
-      return newPageNumber
-    })
+    setCurrentPage(prev => prev - 1)
+    change(currentPage)
   }
 
   return (

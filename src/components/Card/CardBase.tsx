@@ -6,7 +6,7 @@ type CardBaseProps = {
 type Props = CardBaseProps & React.HTMLAttributes<HTMLDivElement>
 
 function CardBase({ title, description, className }: Props) {
-  let rootClasses = "bg-white rounded-md"
+  let rootClasses = "bg-white rounded-md h-[125px]"
 
   if (className) {
     rootClasses = `${rootClasses} ${className}`

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import PRODUCT from 'services/Product';
 
+const productCacheMap = new Map()
 const useProductsApi = function(
   pageNumber:number, 
   amountOfPerPage:number
@@ -12,14 +13,22 @@ const useProductsApi = function(
   async function fetchProducts(pageNumber: number) {
     setIsLoading(true);
 
-    const {
-      total,
-      products
-    } = await PRODUCT.getAll({ pageNumber, amountOfPerPage })
-    const totalPages = Math.ceil(total / amountOfPerPage)
+    if(productCacheMap.has(pageNumber)) {
+      const { totalPages, products } = productCacheMap.get(pageNumber)
+      setProducts(products)
+      setTotalPages(totalPages)
+    } else {
+      const {
+        total,
+        products
+      } = await PRODUCT.getAll({ pageNumber, amountOfPerPage })
+      const totalPages = Math.ceil(total / amountOfPerPage)
 
-    setProducts(products)
-    setTotalPages(totalPages)
+      setTotalPages(totalPages)
+      setProducts(products)
+      productCacheMap.set(pageNumber, { totalPages, products })
+    }
+
     setIsLoading(false);
   }
 

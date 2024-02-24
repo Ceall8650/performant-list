@@ -19,6 +19,7 @@
       "components/*": ["./src/components/*"],
       "services/*": ["./src/services/*"],
       "hooks/*": ["./src/hooks/*"],
+      "views/*": ["./src/views/*"],
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
