@@ -3,7 +3,7 @@ import CardBase from 'components/Card/CardBase';
 import Pagination from 'components/Pagination';
 import useFetchProducts from 'hooks/useProductsApi';
 
-function ListLapTop() {
+function ListLaptop() {
   const FIRST_PAGE_NUMBER = 1
   const AMOUNT_OF_PER_PAGE = 5
   const {
@@ -49,4 +49,4 @@ function ListLapTop() {
   )
 }
 
-export default ListLapTop
+export default ListLaptop
