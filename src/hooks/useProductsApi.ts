@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import PRODUCT from '../services/Product';
+import PRODUCT from 'services/Product';
 
 const useProductsApi = function(
   pageNumber:number, 

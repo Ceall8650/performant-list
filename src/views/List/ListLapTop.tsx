@@ -1,7 +1,7 @@
 import React from 'react'
-import CardBase from '../../components/Card/CardBase';
-import Pagination from '../../components/Pagination';
-import useFetchProducts from '../../hooks/useProductsApi';
+import CardBase from 'components/Card/CardBase';
+import Pagination from 'components/Pagination';
+import useFetchProducts from 'hooks/useProductsApi';
 
 function ListLapTop() {
   const FIRST_PAGE_NUMBER = 1
