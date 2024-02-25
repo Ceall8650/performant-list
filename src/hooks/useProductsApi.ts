@@ -50,7 +50,6 @@ const useProductsApi = function(
       currentProductAmount: products?.length || 0,
        total 
       }),
-    fetchProductsBySkip
   }
 }
 

@@ -52,16 +52,23 @@ function ListMobile() {
     <div className='space-y-3'>
       {
         displayedProducts
-          ? displayedProducts.map((product, index) => (
-            <CardBase
-              key={product.id}
-              dataKey={product.id}
-              ref={index + 1 === displayedProducts.length ? observeProductRef : null}
-              data-serial-number={index}
-              title={product.title}
-              description={product.description}
-            />
-          ))
+          ? <>
+            {
+              displayedProducts.map((product, index) => (
+                <CardBase
+                  key={product.id}
+                  dataKey={product.id}
+                  ref={index + 1 === displayedProducts.length ? observeProductRef : null}
+                  data-serial-number={index}
+                  title={product.title}
+                  description={product.description}
+                />
+              ))
+            }
+            {
+              isLoading && <div className='flex justify-center'>Loading...</div>
+            }
+          </>
           : <LoadingMask />
       }
     </div>

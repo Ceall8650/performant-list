@@ -11,10 +11,10 @@ A list that allows easy reading of a large amount of data and smooth scrolling o
 ## Features
 
 - Pagination
-- Infinite scrolling
 - Responsive Web Design(RWD)
 - API Cache
 - Lazy loading & Infinite Scrolling
+- RWD (Responsive Web Design)
 
 ## Environment
 
