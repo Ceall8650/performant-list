@@ -2,20 +2,24 @@ import CardBase from 'components/Card/CardBase';
 import Pagination from 'components/Pagination';
 import LoadingMask from 'components/LoadingMask';
 import useFetchProducts from 'hooks/useProductsApi';
+import { useCallback } from 'react';
 
 function ListLaptop() {
   const FIRST_PAGE_NUMBER = 1
   const AMOUNT_OF_PER_PAGE = 5
   const {
     isLoading,
-    totalPages,
+    total,
     products,
-    fetchProducts
-  } = useFetchProducts(FIRST_PAGE_NUMBER, AMOUNT_OF_PER_PAGE)
+    fetchProductsBySkip
+  } = useFetchProducts(FIRST_PAGE_NUMBER - 1, AMOUNT_OF_PER_PAGE)
+  const totalPages = Math.ceil(total / AMOUNT_OF_PER_PAGE)
 
-  function changePage(pageNumber: number) {
-    fetchProducts(pageNumber)
-  }
+  const changePage = useCallback((pageNumber: number) => {
+    const skip = (pageNumber - 1) * AMOUNT_OF_PER_PAGE
+
+    fetchProductsBySkip(skip)
+  }, [fetchProductsBySkip])
 
   return (
     <>

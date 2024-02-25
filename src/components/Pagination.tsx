@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 type PaginationProps = {
   totalPages: number,
@@ -15,7 +15,6 @@ function Pagination({ totalPages, change }: PaginationProps) {
     }
 
     setCurrentPage(prev => prev + 1)
-    change(currentPage)
   }
 
   function back() {
@@ -24,8 +23,11 @@ function Pagination({ totalPages, change }: PaginationProps) {
     }
 
     setCurrentPage(prev => prev - 1)
-    change(currentPage)
   }
+
+  useEffect(() => {
+    change(currentPage)
+  }, [currentPage, change])
 
   return (
     <div className='inline-flex items-center'>

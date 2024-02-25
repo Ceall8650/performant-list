@@ -1,46 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import PRODUCT from 'services/Product';
 
 const productCacheMap = new Map()
 const useProductsApi = function(
-  pageNumber:number, 
-  amountOfPerPage:number
+  skip:number, 
+  amountOfProducts:number
   ) {
   const [isLoading, setIsLoading] = useState(false)
-  const [totalPages, setTotalPages] = useState(0)
+  const [total, setTotal] = useState(0)
   const [products, setProducts] = useState<Product[] | null>(null)
-
-  async function fetchProducts(pageNumber: number) {
+  const fetchProductsBySkip = useCallback(async (skip: number) => {
     setIsLoading(true);
 
-    if(productCacheMap.has(pageNumber)) {
-      const { totalPages, products } = productCacheMap.get(pageNumber)
+    if(productCacheMap.has(skip)) {
+      const { total, products } = productCacheMap.get(skip)
       setProducts(products)
-      setTotalPages(totalPages)
+      setTotal(total)
     } else {
       const {
         total,
         products
-      } = await PRODUCT.getAll({ pageNumber, amountOfPerPage })
-      const totalPages = Math.ceil(total / amountOfPerPage)
+      } = await PRODUCT.getProductsBySkip({ skip, amountOfProducts })
 
-      setTotalPages(totalPages)
+      setTotal(total)
       setProducts(products)
-      productCacheMap.set(pageNumber, { totalPages, products })
+      productCacheMap.set(skip, { total, products })
     }
 
     setIsLoading(false);
-  }
+  }, [amountOfProducts])
 
   useEffect(() => {
-    fetchProducts(pageNumber)
+    fetchProductsBySkip(skip)
   }, [])
 
   return {
     isLoading,
-    totalPages,
+    total,
     products,
-    fetchProducts
+    fetchProductsBySkip
   }
 }
 

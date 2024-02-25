@@ -6,12 +6,11 @@ type Response = {
 }
 
 const Product = {
-  async getAll({ pageNumber=1, amountOfPerPage=10 }: {
-    pageNumber?: number, amountOfPerPage?: number
+  async getProductsBySkip({ skip, amountOfProducts=10 }: {
+    skip?: number, amountOfProducts?: number
   }): Promise<Response> {
-   let skip = (pageNumber - 1) * amountOfPerPage
 
-   const { data } = await axios.get(`https://dummyjson.com/products?limit=${amountOfPerPage}&skip=${skip}`)
+   const { data } = await axios.get(`https://dummyjson.com/products?limit=${amountOfProducts}&skip=${skip}`)
 
    return {
      products: data.products,
