@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import PRODUCT from 'services/Product';
 
 function checkHasMore({ skip, currentProductAmount, total }: 
@@ -7,7 +7,6 @@ function checkHasMore({ skip, currentProductAmount, total }:
     return (skip + currentProductAmount) !== total
 }
 
-const productCacheMap = new Map()
 const useProductsApi = function(
   skip:number, 
   amountOfProducts:number
@@ -15,11 +14,12 @@ const useProductsApi = function(
   const [isLoading, setIsLoading] = useState(false)
   const [total, setTotal] = useState(0)
   const [products, setProducts] = useState<Product[] | null>(null)
+  const productCacheMap = useRef(new Map())
   const fetchProductsBySkip = useCallback(async (skip: number) => {
     setIsLoading(true);
 
-    if(productCacheMap.has(skip)) {
-      const { total, products } = productCacheMap.get(skip)
+    if(productCacheMap.current.has(skip)) {
+      const { total, products } = productCacheMap.current.get(skip)
       setProducts(products)
       setTotal(total)
     } else {
@@ -31,7 +31,7 @@ const useProductsApi = function(
       setTotal(total)
       setProducts(products)
 
-      productCacheMap.set(skip, { total, products })
+      productCacheMap.current.set(skip, { total, products })
     }
 
     setIsLoading(false);

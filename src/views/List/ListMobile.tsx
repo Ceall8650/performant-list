@@ -11,7 +11,6 @@ function ListMobile() {
     products,
     hasMore,
     isLoading,
-    fetchProductsBySkip,
   } = useProductsApi(skippedProducts, AMOUNT_OF_LOADING_PRODUCTS)
 
   useEffect(() => {
