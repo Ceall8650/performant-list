@@ -20,6 +20,7 @@
       "services/*": ["./src/services/*"],
       "hooks/*": ["./src/hooks/*"],
       "views/*": ["./src/views/*"],
+      "utils/*": ["./src/utils/*"],
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
