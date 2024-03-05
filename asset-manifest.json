@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/performant-list/static/css/main.728d125a.css",
+    "main.js": "/performant-list/static/js/main.3d9dcff9.js",
+    "index.html": "/performant-list/index.html",
+    "main.728d125a.css.map": "/performant-list/static/css/main.728d125a.css.map",
+    "main.3d9dcff9.js.map": "/performant-list/static/js/main.3d9dcff9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.728d125a.css",
+    "static/js/main.3d9dcff9.js"
+  ]
+}
