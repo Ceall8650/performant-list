@@ -16,6 +16,16 @@ A list that allows easy reading of a large amount of data and smooth scrolling o
 - Lazy loading & Infinite Scrolling
 - Virtualization List
 
+## Performance Tune
+
+- Laptop mode
+  - Cache the API response when the loading the new page
+  - Load the cache data if the page has been visited
+
+- Mobile mode
+  - Lazy loading the list to avoid to load a large amount of the data
+  - Virtualized the list to avoid rendering a large amount of the DOM 
+
 ## Environment
 
 - Node.js v18.15.0 or later
