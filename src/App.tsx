@@ -7,7 +7,7 @@ function App() {
   const isTablet = useMedia({ maxWidth: mediaSize.tablet })
 
   return (
-    <div className='w-full h-full px-20 py-10 bg-slate-100 overflow-auto'>
+    <div className='w-full h-full bg-slate-100 overflow-auto'>
       {
         isTablet ? <ListMobile /> : <ListLaptop />
       }

@@ -13,7 +13,7 @@ type Props = CardBaseProps
 
 const CardBase = forwardRef<Ref, Props>(({ title, description, className, dataKey }: Props, ref) => {
   const isTablet = useMedia({ maxWidth: mediaSize.tablet })
-  let rootClasses = "bg-white rounded-md"
+  let rootClasses = "bg-white rounded-md h-[150px]"
   let descriptionClasses = "px-5 py-3"
 
   if (className) {

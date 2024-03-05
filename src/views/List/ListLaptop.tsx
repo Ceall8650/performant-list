@@ -25,7 +25,7 @@ function ListLaptop() {
     <>
       {
         products &&
-        <>
+        <div className='px-20 py-10'>
           <div className='space-y-3 mb-3'>
             {
               products.map(product => (
@@ -40,7 +40,7 @@ function ListLaptop() {
           <div className='flex justify-center'>
             <Pagination totalPages={totalPages} change={changePage} />
           </div>
-        </>
+          </div>
       }
       {
         isLoading && <LoadingMask />

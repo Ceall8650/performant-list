@@ -14,6 +14,7 @@ A list that allows easy reading of a large amount of data and smooth scrolling o
 - Responsive Web Design(RWD)
 - API Cache
 - Lazy loading & Infinite Scrolling
+- Virtualization List
 - RWD (Responsive Web Design)
 
 ## Environment
